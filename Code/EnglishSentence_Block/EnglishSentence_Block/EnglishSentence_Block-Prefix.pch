@@ -1,0 +1,32 @@
+//
+// Prefix header for all source files of the 'EnglishSentence_Block' target in the 'EnglishSentence_Block' project
+//
+
+#import <Availability.h>
+
+#ifndef __IPHONE_4_0
+#warning "This project uses features only available in iOS SDK 4.0 and later."
+#endif
+
+#ifdef __OBJC__
+    #import <UIKit/UIKit.h>
+    #import <Foundation/Foundation.h>
+#import "Commons.h"
+#import "Constants.h"
+#import "Commons.h"
+#import "UISize.h"
+#import "Drawable.h"
+#import "String.h"
+#import "Color.h"
+#import "AppDelegate.h"
+#import "R.h"
+#import "MyUtils.h"
+#import "Style.h"
+
+#import "UIImageView(Additional).h"
+#import "UIImage(Additional).h"
+#import "UINavigationController(Additional).h"
+#import "UIView(Additional).h"
+#import <QuartzCore/QuartzCore.h>
+#import <CoreImage/CoreImage.h>
+#endif
