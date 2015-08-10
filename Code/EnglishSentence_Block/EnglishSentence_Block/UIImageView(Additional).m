@@ -17,7 +17,7 @@ static NSTimer* timer;
 -(void)animateWithImageNames:(NSArray*)imageNames Duration:(float)duration FinishedHandler:(void (^)(UIImageView* imageView))handler
 {
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(timerStopNoteAction:) name:TIMER_STOP_NOTE object:nil];
-    int n = imageNames.count - 1;
+    NSInteger n = imageNames.count - 1;
     if (n > 0)
     {
         NSMutableArray* imagePaths = [NSMutableArray arrayWithCapacity:2];

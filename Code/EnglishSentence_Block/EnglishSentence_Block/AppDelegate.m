@@ -13,7 +13,7 @@
 
 #import "MBProgressHUD.h"
 
-
+CGFloat  AppDisplayPxValue ;
 @interface AppDelegate()
 
 //应用数据缓存，用于小数据存储
@@ -47,6 +47,11 @@
     
     
     [[DBManager getInstance]openDataBase];
+    self.deviceResolution  = [UIDevice currentResolution ];
+    self.deviceType = [UIDevice currentIphoneDeviceType];
+    
+    AppDisplayPxValue = (self.deviceResolution  != UIDevice_iPadStandardRes)?0.5f:1.0f;
+ 
 
     NSMutableDictionary* tmpMD = [[NSMutableDictionary alloc] initWithCapacity:10];
     self.appCache = tmpMD;
@@ -125,11 +130,11 @@
     MBProgressHUD *mb = [MBProgressHUD showHUDAddedTo:self.window animated:YES];
     mb.removeFromSuperViewOnHide = YES;
     UILabel *lb = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 80, 50)];
-    lb.lineBreakMode = UILineBreakModeWordWrap;
+    lb.lineBreakMode = NSLineBreakByWordWrapping;
     lb.numberOfLines = 0;
     lb.text = toast;
     lb.font = [UIFont systemFontOfSize:13];
-    lb.textAlignment = UITextAlignmentCenter;
+    lb.textAlignment = NSTextAlignmentCenter;
     lb.textColor = [UIColor whiteColor];
     lb.backgroundColor = [UIColor clearColor];
     mb.customView = lb;

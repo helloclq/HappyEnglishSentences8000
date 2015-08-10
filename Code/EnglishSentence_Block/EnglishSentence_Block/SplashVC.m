@@ -44,7 +44,7 @@
     [bearImg release];
     
     
-    UIControl* titleCtr = [[UIControl alloc] initWithFrame:CGRectMake(0,VIEW_Y(bottomBear) -103 * APP_SCALE_W,SCREEN_WIDTH, 103 * APP_SCALE_W)];
+    UIControl* titleCtr = [[UIControl alloc] initWithFrame:CGRectMake(0,VIEW_TY(bottomBear) -103 * APP_SCALE_W,SCREEN_WIDTH, 103 * APP_SCALE_W)];
     [titleCtr addTarget:self action:@selector(handleEvent:) forControlEvents:UIControlEventTouchUpInside];
     titleCtr.backgroundColor = [UIColor clearColor];
     [self.view addSubview:titleCtr];

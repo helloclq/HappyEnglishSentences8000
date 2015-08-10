@@ -11,7 +11,6 @@
 		6D08C4F7176AA7E200A8220D /* SNPopupView+UsingPrivateMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D08C4F5176AA7E200A8220D /* SNPopupView+UsingPrivateMethod.m */; };
 		6D08C4FD176BE4DC00A8220D /* volumeBar.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6D08C4FA176BE4DC00A8220D /* volumeBar.bundle */; };
 		6D08C4FE176BE4DC00A8220D /* VolumeBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D08C4FC176BE4DC00A8220D /* VolumeBar.m */; };
-		6D08C503176C181D00A8220D /* MCSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D08C502176C181D00A8220D /* MCSegmentedControl.m */; };
 		6D29A1C5174B0594009A258A /* DBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D29A1C4174B0594009A258A /* DBManager.m */; };
 		6D29A1F3174B2C3F009A258A /* EGOCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D29A1DC174B2C3F009A258A /* EGOCache.m */; };
 		6D29A1F4174B2C3F009A258A /* EGOImageButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D29A1DF174B2C3F009A258A /* EGOImageButton.m */; };
@@ -108,6 +107,13 @@
 		6DFD531C17CE4B6300CE7A9B /* Nav_menu.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DFD531A17CE4B6300CE7A9B /* Nav_menu.png */; };
 		6DFD531D17CE4B6300CE7A9B /* NavSetting.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DFD531B17CE4B6300CE7A9B /* NavSetting.png */; };
 		6DFD531F17CE4C3400CE7A9B /* title_splash.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DFD531E17CE4C3300CE7A9B /* title_splash.png */; };
+		CCC61BA41B7724E5008CE2AF /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CCC61BA21B7724E5008CE2AF /* Default-568h@2x.png */; };
+		CCC61BA51B7724E5008CE2AF /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CCC61BA31B7724E5008CE2AF /* Default@2x.png */; };
+		CCF63FE71B78398A0042148C /* Default-667h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CCF63FE41B78398A0042148C /* Default-667h@2x.png */; };
+		CCF63FE81B78398A0042148C /* Default-736h@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = CCF63FE51B78398A0042148C /* Default-736h@3x.png */; };
+		CCF63FE91B78398A0042148C /* Default-Landscape@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CCF63FE61B78398A0042148C /* Default-Landscape@2x.png */; };
+		CCF63FEC1B783A960042148C /* UIDevice+Resolutions.m in Sources */ = {isa = PBXBuildFile; fileRef = CCF63FEB1B783A960042148C /* UIDevice+Resolutions.m */; };
+		CCF63FEF1B7842170042148C /* UIImage+DefaultImage.m in Sources */ = {isa = PBXBuildFile; fileRef = CCF63FEE1B7842170042148C /* UIImage+DefaultImage.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -118,8 +124,6 @@
 		6D08C4FA176BE4DC00A8220D /* volumeBar.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = volumeBar.bundle; sourceTree = "<group>"; };
 		6D08C4FB176BE4DC00A8220D /* VolumeBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VolumeBar.h; sourceTree = "<group>"; };
 		6D08C4FC176BE4DC00A8220D /* VolumeBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VolumeBar.m; sourceTree = "<group>"; };
-		6D08C501176C181D00A8220D /* MCSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCSegmentedControl.h; sourceTree = "<group>"; };
-		6D08C502176C181D00A8220D /* MCSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCSegmentedControl.m; sourceTree = "<group>"; };
 		6D29A1C3174B0594009A258A /* DBManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBManager.h; sourceTree = "<group>"; };
 		6D29A1C4174B0594009A258A /* DBManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBManager.m; sourceTree = "<group>"; };
 		6D29A1C7174B063E009A258A /* UISize.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UISize.h; sourceTree = "<group>"; };
@@ -264,6 +268,15 @@
 		6DFD531A17CE4B6300CE7A9B /* Nav_menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Nav_menu.png; sourceTree = "<group>"; };
 		6DFD531B17CE4B6300CE7A9B /* NavSetting.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NavSetting.png; sourceTree = "<group>"; };
 		6DFD531E17CE4C3300CE7A9B /* title_splash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = title_splash.png; sourceTree = "<group>"; };
+		CCC61BA21B7724E5008CE2AF /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		CCC61BA31B7724E5008CE2AF /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		CCF63FE41B78398A0042148C /* Default-667h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-667h@2x.png"; sourceTree = "<group>"; };
+		CCF63FE51B78398A0042148C /* Default-736h@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-736h@3x.png"; sourceTree = "<group>"; };
+		CCF63FE61B78398A0042148C /* Default-Landscape@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape@2x.png"; sourceTree = "<group>"; };
+		CCF63FEA1B783A960042148C /* UIDevice+Resolutions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+Resolutions.h"; sourceTree = "<group>"; };
+		CCF63FEB1B783A960042148C /* UIDevice+Resolutions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+Resolutions.m"; sourceTree = "<group>"; };
+		CCF63FED1B7842170042148C /* UIImage+DefaultImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+DefaultImage.h"; sourceTree = "<group>"; };
+		CCF63FEE1B7842170042148C /* UIImage+DefaultImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+DefaultImage.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -311,23 +324,6 @@
 				6D08C4FC176BE4DC00A8220D /* VolumeBar.m */,
 			);
 			path = Classes;
-			sourceTree = "<group>";
-		};
-		6D08C4FF176C180300A8220D /* Segement */ = {
-			isa = PBXGroup;
-			children = (
-				6D08C500176C181D00A8220D /* MCSegmentedControl */,
-			);
-			name = Segement;
-			sourceTree = "<group>";
-		};
-		6D08C500176C181D00A8220D /* MCSegmentedControl */ = {
-			isa = PBXGroup;
-			children = (
-				6D08C501176C181D00A8220D /* MCSegmentedControl.h */,
-				6D08C502176C181D00A8220D /* MCSegmentedControl.m */,
-			);
-			path = MCSegmentedControl;
 			sourceTree = "<group>";
 		};
 		6D29A1B6174B02B7009A258A /* MVC */ = {
@@ -590,6 +586,10 @@
 		6D29A1F8174B2F95009A258A /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				CCF63FED1B7842170042148C /* UIImage+DefaultImage.h */,
+				CCF63FEE1B7842170042148C /* UIImage+DefaultImage.m */,
+				CCF63FEA1B783A960042148C /* UIDevice+Resolutions.h */,
+				CCF63FEB1B783A960042148C /* UIDevice+Resolutions.m */,
 				6D29A1F9174B2FA3009A258A /* UINavigationController(Additional).h */,
 				6D29A1FA174B2FA3009A258A /* UINavigationController(Additional).m */,
 				6D29A1FB174B2FA3009A258A /* UIView(Additional).h */,
@@ -715,6 +715,11 @@
 		6DCAA7D1174A20D4002F490A = {
 			isa = PBXGroup;
 			children = (
+				CCF63FE41B78398A0042148C /* Default-667h@2x.png */,
+				CCF63FE51B78398A0042148C /* Default-736h@3x.png */,
+				CCF63FE61B78398A0042148C /* Default-Landscape@2x.png */,
+				CCC61BA21B7724E5008CE2AF /* Default-568h@2x.png */,
+				CCC61BA31B7724E5008CE2AF /* Default@2x.png */,
 				6DFD531617CE462700CE7A9B /* icon-IPAD@2x.png */,
 				6DFD531417CE462000CE7A9B /* icon-IPAD.png */,
 				6DFD531017CE45C600CE7A9B /* icon@2x.png */,
@@ -809,7 +814,6 @@
 		6DCAA853174A24C5002F490A /* ThirdPart */ = {
 			isa = PBXGroup;
 			children = (
-				6D08C4FF176C180300A8220D /* Segement */,
 				6D08C4F8176BE4C300A8220D /* VoiceControl */,
 				6D08C4F1176AA7BB00A8220D /* PopupView */,
 				6DE01001174F2B3A007F8D9B /* UIGlossyButton */,
@@ -974,17 +978,22 @@
 				6DA310591766BF2800EB09CA /* PreviousButton@2x.png in Resources */,
 				6DB8D59F176865B100122016 /* common_NavigationBG@2x.png in Resources */,
 				6DB8D5A31768665000122016 /* playerbg.png in Resources */,
+				CCF63FE81B78398A0042148C /* Default-736h@3x.png in Resources */,
+				CCC61BA41B7724E5008CE2AF /* Default-568h@2x.png in Resources */,
+				CCC61BA51B7724E5008CE2AF /* Default@2x.png in Resources */,
 				6D84AD7F1768AE51001B68A7 /* Default-568h@2x.png in Resources */,
 				6D84AD801768AE51001B68A7 /* Default@2x.png in Resources */,
 				6D84AD811768AE51001B68A7 /* Default.png in Resources */,
 				6D84AD861768B359001B68A7 /* bear_splash.png in Resources */,
 				6D84AD8A1768B79D001B68A7 /* table_bottomline.png in Resources */,
+				CCF63FE71B78398A0042148C /* Default-667h@2x.png in Resources */,
 				6D08C4FD176BE4DC00A8220D /* volumeBar.bundle in Resources */,
 				6D993B1F178A50190081129A /* about.png in Resources */,
 				6DFD530F17CE45BF00CE7A9B /* icon.png in Resources */,
 				6DFD531117CE45C600CE7A9B /* icon@2x.png in Resources */,
 				6DFD531517CE462000CE7A9B /* icon-IPAD.png in Resources */,
 				6DFD531717CE462700CE7A9B /* icon-IPAD@2x.png in Resources */,
+				CCF63FE91B78398A0042148C /* Default-Landscape@2x.png in Resources */,
 				6DFD531C17CE4B6300CE7A9B /* Nav_menu.png in Resources */,
 				6DFD531D17CE4B6300CE7A9B /* NavSetting.png in Resources */,
 				6DFD531F17CE4C3400CE7A9B /* title_splash.png in Resources */,
@@ -1011,6 +1020,7 @@
 				6DCAA86C174A2E7F002F490A /* FMDatabase.m in Sources */,
 				6DCAA86D174A2E7F002F490A /* FMDatabaseAdditions.m in Sources */,
 				6DCAA86E174A2E7F002F490A /* FMDatabasePool.m in Sources */,
+				CCF63FEC1B783A960042148C /* UIDevice+Resolutions.m in Sources */,
 				6DCAA86F174A2E7F002F490A /* FMDatabaseQueue.m in Sources */,
 				6DCAA870174A2E7F002F490A /* FMResultSet.m in Sources */,
 				6D29A1C5174B0594009A258A /* DBManager.m in Sources */,
@@ -1019,6 +1029,7 @@
 				6D29A1F5174B2C3F009A258A /* EGOImageLoadConnection.m in Sources */,
 				6D29A1F6174B2C3F009A258A /* EGOImageLoader.m in Sources */,
 				6D29A1F7174B2C3F009A258A /* EGOImageView.m in Sources */,
+				CCF63FEF1B7842170042148C /* UIImage+DefaultImage.m in Sources */,
 				6D29A204174B3A66009A258A /* SplashVC.m in Sources */,
 				6D29A20A174B918D009A258A /* BlockVC.m in Sources */,
 				6DE0100B174F5CF3007F8D9B /* BasicSideVC.m in Sources */,
@@ -1029,7 +1040,6 @@
 				6D08C4F6176AA7E200A8220D /* SNPopupView.m in Sources */,
 				6D08C4F7176AA7E200A8220D /* SNPopupView+UsingPrivateMethod.m in Sources */,
 				6D08C4FE176BE4DC00A8220D /* VolumeBar.m in Sources */,
-				6D08C503176C181D00A8220D /* MCSegmentedControl.m in Sources */,
 				6D993B22178A61140081129A /* AboutVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1073,7 +1083,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "7C88DB10-682E-4CCF-BE02-D4B75843D13D";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "7C88DB10-682E-4CCF-BE02-D4B75843D13D";
@@ -1099,7 +1109,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PROVISIONING_PROFILE = "7C88DB10-682E-4CCF-BE02-D4B75843D13D";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "7C88DB10-682E-4CCF-BE02-D4B75843D13D";
@@ -1116,7 +1126,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "EnglishSentence_Block/EnglishSentence_Block-Prefix.pch";
 				INFOPLIST_FILE = "EnglishSentence_Block/EnglishSentence_Block-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
@@ -1138,7 +1148,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "EnglishSentence_Block/EnglishSentence_Block-Prefix.pch";
 				INFOPLIST_FILE = "EnglishSentence_Block/EnglishSentence_Block-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",

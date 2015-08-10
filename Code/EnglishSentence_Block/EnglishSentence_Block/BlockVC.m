@@ -7,6 +7,7 @@
 //
 
 #import "BlockVC.h"
+#import "UIImage+DefaultImage.h"
 
 @interface BlockVC ()
 
@@ -21,6 +22,37 @@
 @synthesize leftNavBt;
 @synthesize rightNavBt;
 @synthesize leftControl;
+
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        // Custom initialization
+        
+        if (IOS7) {
+            _topOffset = 20.0f;
+        }else {
+            _topOffset = 0.0f;
+        }
+        
+        if (IOS7) {
+            self.edgesForExtendedLayout = UIRectEdgeNone;
+        }
+        
+    }
+    return self;
+}
+
+-(id)initWithFrame:(CGRect)rc
+{
+    if (self = [super initWithNibName:nil bundle:nil]) {
+        self.view.frame = rc;
+       
+    }
+    return self;
+}
+
 
 /**
  *处理标题栏左按钮的事件
@@ -50,18 +82,22 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+   
+    
+    
     self.mainRect =  WINDOWFRAME;
     self.title = [self getNavTitle];
     if ([self useDefaultBg]) {
         UIImageView* bgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, APP_HEIGHT)];
-        bgView.image = [IMG(isiPhone5?@"Default-568h@2x.png":@"Default@2x.png")stretchableImageWithLeftCapWidth:21 topCapHeight:14];
+        bgView.image = [[UIImage defaultImage] stretchableImageWithLeftCapWidth:21 topCapHeight:14];
         bgView.contentMode = UIViewContentModeScaleToFill;
         //bgView.center = self.view.center;
         [self.view addSubview:bgView];
         [bgView release];
     }
     
-    [self.view setBackgroundColor:COLOR_MAIN_BG];
+    [self.view setBackgroundColor:RGBCOLOR(88, 191, 193)];
     
     self.navigationController.navigationBarHidden = YES;
     
@@ -70,17 +106,20 @@
      * v2.0版本，隐藏系统navigation导航栏，
      **/
     if ([self navigationBG]) {
-        UIImageView* navigatonBg = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.mainRect.size.width,NAVIGATION_HEIGHT)];
-        navigatonBg.image = IMG([self navigationBG]);
+        UIImageView* navigatonBg = [[UIImageView alloc] initWithFrame:CGRectMake(0, self.topOffset, self.mainRect.size.width,NAVIGATION_HEIGHT)];
+        navigatonBg.image = [UIImage imageFromColor:RGBCOLOR(88, 191, 193)];//IMG([self navigationBG]);
         navigatonBg.userInteractionEnabled = YES;
         self.navigationView = navigatonBg;
-        self.navigationView.layer.shadowOffset = CGSizeMake(0.0, 0.7);
-        self.navigationView.layer.shadowColor = RGBACOLOR(0, 0, 0, 0.7).CGColor;
-        self.navigationView.layer.masksToBounds = NO;
-        self.navigationView.layer.shadowOpacity = 1;
-        
         [self.view addSubview:self.navigationView];
         [navigatonBg release];
+        
+        
+        //标题栏下的绿线
+        UILabel* titlebarLine = [[UILabel alloc] initWithFrame:CGRectMake(0, NAVIGATION_HEIGHT - AppDisplayPxValue  , self.view.frame.size.width, AppDisplayPxValue)];
+        titlebarLine.backgroundColor = RGBCOLOR(0xff, 0xff, 0xff);
+        titlebarLine.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+        [self.navigationView addSubview:titlebarLine];
+        [titlebarLine release];
     }
     
     if ([self LeftBtBG]) {
@@ -117,7 +156,7 @@
     }
     
     if ([self getNavTitle]) {
-        UILabel* titleLb = [[UILabel alloc]initWithFrame:CGRectMake(0, 15, 180, 24)];
+        UILabel* titleLb = [[UILabel alloc]initWithFrame:CGRectMake(0, self.topOffset, 180, NAVIGATION_HEIGHT)];
         titleLb.font = FONT_BOLD(20);
         titleLb.textColor = [UIColor whiteColor];
         titleLb.textAlignment = NSTextAlignmentCenter;
@@ -125,7 +164,7 @@
         //[titleLb sizeToFit];
         titleLb.shadowColor = [UIColor blackColor];
         titleLb.shadowOffset = CGSizeMake(0, 0.3);
-        titleLb.center = self.navigationView.center;
+        titleLb.center = CGPointMake(self.navigationView.bounds.size.width/2.0f, self.navigationView.bounds.size.height/2.0f);
         self.titleLabel = titleLb;
         [titleLb release];
         
@@ -285,9 +324,9 @@
 -(void)addPageSize:(NSString*)key {
     
     
-    int old = [ self getPageSize:key];
+    NSInteger old = [ self getPageSize:key];
     
-    [[self getApp] saveData:[NSNumber numberWithInt:(old + 1) ] forKey:key];
+    [[self getApp] saveData:[NSNumber numberWithInteger:(old + 1) ] forKey:key];
 }
 
 /**

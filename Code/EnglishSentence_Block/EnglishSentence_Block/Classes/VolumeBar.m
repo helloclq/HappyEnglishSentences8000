@@ -161,6 +161,8 @@
 @end
 
 @implementation VolumeBar
+@synthesize contentImage;
+@synthesize contentView;
 @dynamic currentVolume;
 
 - (id)initWithFrame:(CGRect)frame
@@ -189,7 +191,7 @@
         [self addSubview:_circleSlide];
         
         //content
-        _contentImage = [UIImage imageNamed:@"volumeBar.bundle/vol_full.png"];
+        self.contentImage = [UIImage imageNamed:@"volumeBar.bundle/vol_full.png"];
         _contentView = [[UIImageView alloc] initWithFrame:_backgroundView.bounds];
         [self addSubview:_contentView];
         _progress = 1;

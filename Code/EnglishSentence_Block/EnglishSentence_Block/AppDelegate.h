@@ -7,12 +7,22 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UIDevice+Resolutions.h"
 
+extern CGFloat    AppDisplayPxValue ;//one point value depend on hardware condition.
 
 @class MBProgressHUD;
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
+
 @property (strong, nonatomic) UIWindow *window;
 @property (retain, nonatomic) MBProgressHUD* progressDialog;
+
+//Screen solution
+@property (assign, nonatomic) UIDeviceResolution deviceResolution;
+
+@property (assign, nonatomic)UIIphoneDeviceType deviceType;
+
+
 /**
  *显示等待菊花对话框
  **/

@@ -69,7 +69,7 @@
         _chineseLabel = [[UILabel alloc] initWithFrame:CGRectMake(35, 0,SCREEN_WIDTH - 30 ,  chineseContainer.frame.size.height)];
         self.chineseLabel.numberOfLines = 2;
         self.chineseLabel.font = [UIFont boldSystemFontOfSize:16.5f];
-        self.chineseLabel.textAlignment = UITextAlignmentLeft;
+        self.chineseLabel.textAlignment = NSTextAlignmentCenter;
         self.chineseLabel.baselineAdjustment = UIBaselineAdjustmentAlignBaselines;
         self.chineseLabel.text = @"开心英语8000句，中文翻译";
         self.chineseLabel.backgroundColor = [UIColor clearColor];
@@ -94,7 +94,7 @@
         _englishLabel = [[UILabel alloc] initWithFrame:CGRectMake(35,0, SCREEN_WIDTH - 35 - 10, englishContainer.frame.size.height)];
         self.englishLabel.numberOfLines = 2;
         self.englishLabel.font = [UIFont boldSystemFontOfSize:16.5f];
-        self.englishLabel.textAlignment = UITextAlignmentLeft;
+        self.englishLabel.textAlignment = NSTextAlignmentCenter;
         self.englishLabel.baselineAdjustment = UIBaselineAdjustmentAlignCenters;
         self.englishLabel.text = @"English sentence 8000,Learning...";
         self.englishLabel.backgroundColor = [UIColor clearColor];

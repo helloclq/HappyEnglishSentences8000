@@ -34,7 +34,7 @@ static UIViewController* _appearingVC;
 {
     _completion = [completion copy];
     _actPoping = YES;
-    int index = self.viewControllers.count - 2;
+    NSInteger index = self.viewControllers.count - 2;
     if (index >= 0) {
         _appearingVC = [self.viewControllers objectAtIndex:index];
         [self addAnimationsViaStyle:transitionStyle];
@@ -148,7 +148,7 @@ static UIViewController* _appearingVC;
         _appearingVC = nil;
         _completion = nil;
     }else{
-        [NSException raise:@"animationError!" format:@"animationDidStop class error."];
+//        [NSException raise:@"animationError!" format:@"animationDidStop class error."];
     }
 }
 

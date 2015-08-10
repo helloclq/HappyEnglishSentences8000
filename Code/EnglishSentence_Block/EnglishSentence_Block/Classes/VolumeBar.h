@@ -17,6 +17,8 @@
     NSInteger _currentVolume;
 }
 @property (nonatomic, assign) NSInteger currentVolume;
+@property (nonatomic,retain)UIImage* contentImage;
+@property (nonatomic,retain)UIImageView* contentView;
 
 - (id)initWithFrame:(CGRect)frame minimumVolume:(NSInteger)minimumVolume maximumVolume:(NSInteger)maximumVolume;
 

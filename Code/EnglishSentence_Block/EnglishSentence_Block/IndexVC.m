@@ -11,7 +11,6 @@
 #import "SentenceEntity.h"
 #import "EnglishSentenceItem.h"
 #import "VolumeBar.h"
-#import "MCSegmentedControl.h"
 #import "SideContainerManager.h"
 
 #define BOTTOM_COTROL_H 57
@@ -52,8 +51,8 @@
 @property (nonatomic,retain)NSTimer* stopTimer;
 
 
-@property (nonatomic,assign)int sectionIndex;
-@property (nonatomic,assign)int sentenceIndex;
+@property (nonatomic,assign)NSInteger sectionIndex;
+@property (nonatomic,assign)NSInteger sentenceIndex;
 
 
 //对SideContainerManager的引用，此处仅为一个章节播放完继续播后面的资源用
@@ -115,7 +114,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    UIImageView* bgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, NAVIGATION_HEIGHT, SCREEN_WIDTH, APP_HEIGHT - NAVIGATION_HEIGHT)];
+    UIImageView* bgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, NAVIGATION_HEIGHT + self.topOffset, SCREEN_WIDTH, APP_HEIGHT - NAVIGATION_HEIGHT)];
  
     bgView.backgroundColor = [UIColor clearColor];
     bgView.image = IMG(@"playerbg.png");
@@ -126,8 +125,8 @@
     
     
     
-    sentenceTable = [[UITableView alloc] initWithFrame:CGRectMake(0, NAVIGATION_HEIGHT, APP_WIDTH, APP_HEIGHT - NAVIGATION_HEIGHT - BOTTOM_COTROL_H ) style:UITableViewStylePlain];
-    sentenceTable.layer.masksToBounds = NO;
+    sentenceTable = [[UITableView alloc] initWithFrame:CGRectMake(0, NAVIGATION_HEIGHT + self.topOffset, APP_WIDTH, APP_HEIGHT - NAVIGATION_HEIGHT  ) style:UITableViewStylePlain];
+    sentenceTable.layer.masksToBounds = YES;
     sentenceTable.dataSource = self;
     sentenceTable.delegate = self;
     sentenceTable.backgroundView = nil;
@@ -142,21 +141,21 @@
     
     
     self.playerBt = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.playerBt.frame = CGRectMake((SCREEN_WIDTH - 33)/2.0, SCREEN_HEIGHT - BOTTOM_COTROL_H - (BOTTOM_COTROL_H - 36)/2.0, 33, 36);
+    self.playerBt.frame = CGRectMake((SCREEN_WIDTH - 33)/2.0, self.topOffset + SCREEN_HEIGHT - BOTTOM_COTROL_H - (BOTTOM_COTROL_H - 36)/2.0, 33, 36);
     [self.playerBt setBackgroundImage:IMG(@"playButton@2x.png") forState:UIControlStateNormal];
     [self.playerBt addTarget:self action:@selector(play:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.playerBt];
     
     
     self.preBt = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.preBt.frame = CGRectMake(((SCREEN_WIDTH - 33)/2.0 - 22)/2.0, SCREEN_HEIGHT - BOTTOM_COTROL_H - (BOTTOM_COTROL_H - 44)/2.0, 22, 25);
+    self.preBt.frame = CGRectMake(((SCREEN_WIDTH - 33)/2.0 - 22)/2.0,  SCREEN_HEIGHT - BOTTOM_COTROL_H - (BOTTOM_COTROL_H - 44)/2.0, 22, 25);
     [self.preBt setBackgroundImage:IMG(@"PreviousButton@2x.png") forState:UIControlStateNormal];
     [self.preBt addTarget:self action:@selector(playPre:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.preBt];
     self.preBt.hidden = YES;
     
     self.nextBt = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.nextBt.frame = CGRectMake(SCREEN_WIDTH/2.0 + SCREEN_WIDTH/4.0 - 11, SCREEN_HEIGHT - BOTTOM_COTROL_H - (BOTTOM_COTROL_H - 44)/2.0, 22, 25);
+    self.nextBt.frame = CGRectMake(SCREEN_WIDTH/2.0 + SCREEN_WIDTH/4.0 - 11, self.topOffset + SCREEN_HEIGHT - BOTTOM_COTROL_H - (BOTTOM_COTROL_H - 44)/2.0, 22, 25);
     [self.nextBt setBackgroundImage:IMG(@"NextButton@2x.png") forState:UIControlStateNormal];
     [self.nextBt addTarget:self action:@selector(playNext:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.nextBt];
@@ -170,7 +169,7 @@
     
     
     settingContainer = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH * 0.7 , 250.0f)];
-    settingContainer.backgroundColor = [UIColor colorWithRed:0xb4/255.0f green:0xeb/255.0f blue:0xed/255.0f alpha:0.8f];
+    settingContainer.backgroundColor = RGBACOLOR(88, 191, 193,0.5f);
     settingContainer.layer.cornerRadius = 3;
     settingContainer.layer.borderWidth = 0.0f;
     settingContainer.layer.borderColor = [[UIColor clearColor] CGColor];
@@ -213,20 +212,24 @@
 					  @"中文+英文",
 					  @"English",
 					  nil];
-	MCSegmentedControl *segmentedControl = [[MCSegmentedControl alloc] initWithItems:items];
-	
-	// set frame, add to view, set target and action for value change as usual
-	segmentedControl.frame = CGRectMake(10.0f, bar.frame.size.height+5 + 65, settingContainer.frame.size.width - 20, 34.0f);
-	[segmentedControl addTarget:self action:@selector(segmentedControlDidChange:) forControlEvents:UIControlEventValueChanged];
-	segmentedControl.font = FONT_BOLD(14);
-	segmentedControl.selectedSegmentIndex = 1;
-	
-	// Set a tint color
-	segmentedControl.tintColor = COLOR_MAIN_BG;
-	
-	// Customize font and items color
-	segmentedControl.selectedItemColor   = [UIColor whiteColor];
-	segmentedControl.unselectedItemColor = [UIColor darkGrayColor];
+ 
+
+    UISegmentedControl* segmentedControl = [[UISegmentedControl alloc] initWithItems:items];
+    segmentedControl.frame = CGRectMake(10.0f, VIEW_BY(staticModelTxtLable), settingContainer.frame.size.width - 20, 34.0f);
+    [segmentedControl addTarget:self action:@selector(segmentedControlDidChange:) forControlEvents:UIControlEventValueChanged];
+    
+    segmentedControl.selectedSegmentIndex = 1;
+    
+    // Set a tint color
+    segmentedControl.tintColor = RGBCOLOR(88, 191, 193);
+    
+    segmentedControl.layer.cornerRadius = 5.0f;
+    segmentedControl.layer.borderWidth = 0.0f;
+    segmentedControl.layer.borderColor = RGBCOLOR(88, 191, 193).CGColor;
+    
+    
+	 
+	segmentedControl.backgroundColor = [UIColor whiteColor];
     
 	[settingContainer addSubview:segmentedControl];
     
@@ -241,14 +244,14 @@
 - (void)onVolumeBarChange:(id)sender
 {
     VolumeBar *tmpbar = sender;
-    voiceLable.text = [NSString stringWithFormat:@"Volume: %d", tmpbar.currentVolume];
+    voiceLable.text = [NSString stringWithFormat:@"Volume: %ld", tmpbar.currentVolume];
      _audioPlayer.volume= tmpbar.currentVolume * 0.1f;
     
 }
 
 - (void)segmentedControlDidChange:(id)sender
 {
-    MCSegmentedControl* mc = sender;
+    UISegmentedControl* mc = sender;
     if (mc.selectedSegmentIndex == 0) {
         showStyle = Chinese;
     }else  if (mc.selectedSegmentIndex == 1) {
@@ -346,8 +349,8 @@
         
     }
     
-    int secitonId = -1;
-    int sentenceId =  -1;
+    NSInteger secitonId = -1;
+    NSInteger sentenceId =  -1;
     
     if (indexSection >= index) {
 
@@ -617,7 +620,7 @@
     [chapterImg release];
     
     UITextField* sectionTitle = [[UITextField alloc] initWithFrame:CGRectMake(30, 0, SCREEN_WIDTH-40, 44)];
-    sectionTitle.textAlignment = UITextAlignmentLeft;
+    sectionTitle.textAlignment = NSTextAlignmentLeft;
     sectionTitle.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
     sectionTitle.backgroundColor = [UIColor clearColor];
     sectionTitle.enabled = NO;
@@ -673,12 +676,12 @@
     NSIndexPath* indexPath = self.resource.selectedId;
     NSIndexPath* nextIndexPath;
     //所有章节数
-    int lengthOfChapters = self.resource.chapters.count;
+    NSInteger lengthOfChapters = self.resource.chapters.count;
    
     SentenceEntity* seChapter = (SentenceEntity*)[self.resource.chapters objectAtIndex:indexPath.section];
     
     NSMutableArray* tmpSections = (NSMutableArray*)[self.resource.chapter_sections objectForKey:seChapter.sentenceId];
-    int lengthOfSection = tmpSections.count;
+    NSInteger lengthOfSection = tmpSections.count;
     
     if (indexPath.section == lengthOfChapters -1 && indexPath.row == lengthOfSection - 1) {
         nextIndexPath = [NSIndexPath indexPathForRow:0 inSection:0];

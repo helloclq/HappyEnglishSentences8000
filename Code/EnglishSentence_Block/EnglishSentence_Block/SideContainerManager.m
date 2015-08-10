@@ -11,9 +11,7 @@
 #import "DBManager.h"
 #import "BasicSideVC.h"
 #import "SentenceEntity.h"
-
-#define TOP_BOTTOM_SPACE  (iPhone5?45:15)
-
+ 
 
 @interface SideContainerManager ()
 {
@@ -57,14 +55,10 @@
 
 - (void)dealloc
 {
-//    CCLog(@"dealloc-----s");
-    
     [_chapter_sections release];
     [_chapters release];
     self.searchInput = nil;
-//    CCLog(@"dealloc---%d",[self.contentVC  retainCount]);
     self.contentVC  = nil;
-//    CCLog(@"dealloc-----e");
     
     self.selectedId = nil;
     [super dealloc];
@@ -82,10 +76,10 @@
     [bgImgView release];
 
     
-    UILabel* titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, SLIDINGMENU_WIDTH, 46)];
+    UILabel* titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, self.topOffset, SLIDINGMENU_WIDTH, 46)];
     titleLabel.backgroundColor = [UIColor clearColor];
     titleLabel.text = @"开心英语8000句";
-    titleLabel.textAlignment = UITextAlignmentCenter;
+    titleLabel.textAlignment = NSTextAlignmentCenter;
     titleLabel.textColor = [UIColor whiteColor];
     titleLabel.shadowColor = [UIColor blackColor];
     titleLabel.shadowOffset = CGSizeMake(0, 0.3);
@@ -93,7 +87,7 @@
     [self.view addSubview:titleLabel];
     [titleLabel release];
     
-    UIControl *searchCtr = [[UIControl alloc] initWithFrame:CGRectMake(0, 0, SLIDINGMENU_WIDTH, 46)];
+    UIControl *searchCtr = [[UIControl alloc] initWithFrame:CGRectMake(0, self.topOffset, SLIDINGMENU_WIDTH, 46)];
     searchCtr.backgroundColor = RGBACOLOR(255, 0, 0, 0);
     searchCtr.hidden = YES;
     [self.view addSubview:searchCtr];
@@ -122,7 +116,7 @@
     [searchCtr release];
     
     
-    UITableView* chapterTB = [[UITableView alloc] initWithFrame:CGRectMake(0, 46 + 5, SLIDINGMENU_WIDTH, APP_HEIGHT - 46 -10-74)];
+    UITableView* chapterTB = [[UITableView alloc] initWithFrame:CGRectMake(0, 46 + 5+ self.topOffset, SLIDINGMENU_WIDTH, APP_HEIGHT - 46 -10-74)];
     chapterTB.backgroundColor = RGBACOLOR(0, 0, 0, 0);
     chapterTB.dataSource = self;
     chapterTB.delegate = self;
@@ -364,7 +358,7 @@
     
     if (paramSender.state == UIGestureRecognizerStateEnded) {
         if (_contentVC.view.center.x > APP_WIDTH / 1.5) {
-            float time  = abs(_contentVC.view.center.x - APP_WIDTH/2.0 - SLIDINGMENU_WIDTH)/(APP_WIDTH*2.0);
+            float time  = fabs(_contentVC.view.center.x - APP_WIDTH/2.0 - SLIDINGMENU_WIDTH)/(APP_WIDTH*2.0);
             
             [UIView animateWithDuration:time animations:^{
                 CGPoint nextCenterPoint;
@@ -374,7 +368,7 @@
                 _contentVC.view.layer.masksToBounds = YES;
             }];
         } else {
-            float time  = abs(_contentVC.view.center.x - APP_WIDTH/2.0)/(APP_WIDTH *2.0);
+            float time  = fabs(_contentVC.view.center.x - APP_WIDTH/2.0)/(APP_WIDTH *2.0);
             
             [UIView animateWithDuration:time animations:^{
                 _contentVC.view.center = CGPointMake(APP_WIDTH/2.0, _contentVC.view.center.y);

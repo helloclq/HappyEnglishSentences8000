@@ -30,14 +30,15 @@
     //[self.view setBackgroundColor:[UIColor greenColor]];
     
     CGRect tr = self.mainRect;
-    UITableView *tb = [[UITableView alloc] initWithFrame:CGRectMake(0, 0+ NAVIGATION_HEIGHT, tr.size.width, tr.size.height - 0) style:UITableViewStyleGrouped];
-    
+    UITableView *tb = [[UITableView alloc] initWithFrame:CGRectMake(0, self.topOffset+ NAVIGATION_HEIGHT, tr.size.width, tr.size.height - 0) style:UITableViewStyleGrouped];
+    tb.layer.masksToBounds = YES;
     tb.dataSource = self;
     tb.backgroundView = nil;
-    tb.backgroundColor = [UIColor clearColor];
+    tb.backgroundColor = [UIColor colorWithRed:0xb4/255.0f green:0xeb/255.0f blue:0xed/255.0f alpha:0.8f];
     tb.delegate = self;
     
     [self.view addSubview:tb];
+    [tb release];
 }
 
 - (void)didReceiveMemoryWarning
@@ -159,12 +160,7 @@
             
             // 添加发送者
             NSArray *toRecipients = [NSArray arrayWithObject: @"285224065@qq.com"];
-//            NSArray *ccRecipients = [NSArray arrayWithObjects:@"sunyl@naomi.cn", @"yimei@naomi.cn", nil];
-            //NSArray *bccRecipients = [NSArray arrayWithObject:@"fourth@example.com", nil];
-            [tmpMailPicker setToRecipients: toRecipients];
-//            [tmpMailPicker setCcRecipients:ccRecipients];
-            //[picker setBccRecipients:bccRecipients];
-            
+            [tmpMailPicker setToRecipients: toRecipients];            
             
             NSString *emailBody = @"邮件正文（请紧接着写下您的意见，非常感谢）：";
             [tmpMailPicker setMessageBody:emailBody isHTML:YES];
@@ -175,7 +171,10 @@
             }
             
             
-            [self presentModalViewController: tmpMailPicker animated:YES];
+            [self presentViewController:tmpMailPicker animated:YES
+                             completion:^{
+                                 
+                             }];
             [tmpMailPicker release];
             
             
@@ -244,7 +243,9 @@
             break;
     }
     
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:^{
+        
+    }];
     
 }
 

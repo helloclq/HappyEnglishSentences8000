@@ -10,6 +10,13 @@
 
 @interface BlockVC : UIViewController
 
+/**
+ *for ios7 above,if no navigationbar
+ **/
+@property (nonatomic,assign,readonly)float  topOffset;
+
+
+
 @property (nonatomic,retain) NSString* navTitle;
 @property (nonatomic,assign) CGRect mainRect ;
 @property (nonatomic,retain) UIImageView* navigationView;

@@ -43,7 +43,7 @@ CFAbsoluteTime startTime;
 #define DDLog(FORMAT, ...) 
 #endif
 
-//程礼群的log ,数据库的log
+//DB log
 #ifdef DBLOGOPEN
     #define BLOCK_DBLog(FORMAT, ...) fprintf(stderr,"%s:%d\t%s\n",[[[NSString stringWithUTF8String:__FILE__] lastPathComponent] UTF8String], __LINE__, [[NSString stringWithFormat:FORMAT, ##__VA_ARGS__] UTF8String]);
 #else
@@ -57,25 +57,11 @@ CFAbsoluteTime startTime;
 #endif
 
 
+#define IOS7 [[[UIDevice currentDevice]systemVersion] floatValue] >= 7.0   //NSFoundationVersionNumber
+#define IOS8 [[[UIDevice currentDevice]systemVersion] floatValue] >= 8.0   //NSFoundationVersionNumber
+#define IOS7OFFSET 20.0f
 
-#define WINDOWFRAME [[UIScreen mainScreen]bounds]
-
-#define iPhone5 ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(640, 1136), [[UIScreen mainScreen] currentMode].size) : NO)
-
-#define   IphoneFrame    CGRectMake(0, 20, 320, 460)
-#define   IphoneRect    CGRectMake(0, 0, 320, 460)
-#define   Iphone5Frame   CGRectMake(0, 20, 320, 548)
-#define   Iphone5Rect   CGRectMake(0, 0.0, 320, 548)
-
-
-//重新定义几个尺寸问题 2013－02－04
-#define   RectIphone4Full    CGRectMake(0, 0, 320, 480) //全屏幕
-#define   RectIphone4NoStatus    CGRectMake(0, 20, 320, 460)// 不带状态栏
-#define   RectIphone5Full    CGRectMake(0, 0, 320, 568)//全屏幕
-#define   RectIphone5NoStatus    CGRectMake(0, 20, 320, 548)// 不带状态栏
-
-
-#define IMG(name) [UIImage imageNamedFixed:name]
+ 
 
 #define BARBUTTON(TITLE,SELECTOR)  [[UIBarButtonItem alloc]initWithTitle:TITLE style:UIBarButtonItemStylePlain target:self action:SELECTOR] autorelease]
 
@@ -95,42 +81,100 @@ CFAbsoluteTime startTime;
 #define PATH_OF_TEMP        NSTemporaryDirectory()
 #define PATH_OF_DOCUMENT    [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0]
 
-// 系统的AppDelegate
+#pragma mark ---- AppDelegate
+//AppDelegate
 #define APPDELEGATE ((AppDelegate*)[UIApplication sharedApplication].delegate)
-//系统的UIApplication
-#define APPD  [UIApplication sharedApplication]
 
+//UIApplication
+#define APPD  [UIApplication sharedApplication]
 #define rootNavVC (UINavigationController*)[[[[UIApplication sharedApplication] delegate] window] rootViewController]
 
-#pragma mark - color functions
+#define isPad  ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
+#define isiPhone5 ([[UIScreen mainScreen]bounds].size.height == 568)
 
+#pragma mark ---- String  functions
+#define EMPTY_STRING        @""
+#define STR(key)            NSLocalizedString(key, nil)
+
+#pragma mark ---- UIImage  UIImageView  functions
+#define IMG(name) [UIImage imageNamed:name]
+#define IMGF(name) [UIImage imageNamedFixed:name]
+
+#pragma mark ---- File  functions
+#define PATH_OF_APP_HOME    NSHomeDirectory()
+#define PATH_OF_TEMP        NSTemporaryDirectory()
+#define PATH_OF_DOCUMENT    [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0]
+#define PATH_OF_LIBRARY_SUPPORT    [NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES) objectAtIndex:0]
+
+#pragma mark ---- color functions
 #define RGBCOLOR(r,g,b) [UIColor colorWithRed:(r)/255.0f green:(g)/255.0f blue:(b)/255.0f alpha:1]
-
+#define RGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
+#define RGBA(rgbValue,a) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:a]
 #define RGBACOLOR(r,g,b,a) [UIColor colorWithRed:(r)/255.0f green:(g)/255.0f blue:(b)/255.0f alpha:(a)]
+#define CLEARCOLOR  [UIColor clearColor]
 
+#pragma mark ----Size ,X,Y, View ,Frame
+
+#define WINDOWFRAME [[UIScreen mainScreen]bounds]
+
+#define   IphoneFrame    CGRectMake(0, 20, 320, 460)
+#define   IphoneRect    CGRectMake(0, 0, 320, 460)
+#define   Iphone5Frame   CGRectMake(0, 20, 320, 548)
+#define   Iphone5Rect   CGRectMake(0, 0.0, 320, 548)
+
+//重新定义几个尺寸问题 2013－02－04
+#define   RectIphone4Full    CGRectMake(0, 0, 320, 480) //full screen
+#define   RectIphone4NoStatus    CGRectMake(0, 20, 320, 460)// without status bar
+
+#define   RectIphone5Full    CGRectMake(0, 0, 320, 568)//ull screen
+#define   RectIphone5NoStatus    CGRectMake(0, 20, 320, 548)//without status bar
+
+#define   RectIphone5Full    CGRectMake(0, 0, 320, 568)//ull screen
+#define   RectIphone5NoStatus    CGRectMake(0, 20, 320, 548)//without status bar
+
+
+
+#define SCREEN_FRAME  [[UIScreen mainScreen]bounds]
+//app frame rect without status bar
+#define APP_FRAME [[UIScreen mainScreen]applicationFrame]
+
+//get the  size of the Screen
 #define SCREEN_HEIGHT [[UIScreen mainScreen]bounds].size.height
 #define SCREEN_WIDTH [[UIScreen mainScreen]bounds].size.width
-#define HEIGHT_SCALE  ([[UIScreen mainScreen]bounds].size.height/480.0)
-
-
-
-#define APP_HEIGHT [[UIScreen mainScreen]applicationFrame].size.height
-#define APP_WIDTH [[UIScreen mainScreen]applicationFrame].size.width
+ 
 #define APP_SCALE  ([[UIScreen mainScreen]applicationFrame].size.height/480.0)
 
 #define APP_SCALE_W  ([[UIScreen mainScreen]applicationFrame].size.width/320.0)
 
-//view左上角的x ，y
-#define VIEW_X(view) (view.frame.origin.x)
-#define VIEW_Y(view) (view.frame.origin.y)
-//view的宽高
+
+
+//get the  size of the Application
+//IOS8  has bug？
+#define APP_HEIGHT [[UIScreen mainScreen]applicationFrame].size.height
+#define APP_WIDTH [[UIScreen mainScreen]applicationFrame].size.width
+
+//get the left top origin's x,y of a view
+#define VIEW_TX(view) (view.frame.origin.x)
+#define VIEW_TY(view) (view.frame.origin.y)
+
+//get the width size of the view:width,height
 #define VIEW_W(view)  (view.frame.size.width)
 #define VIEW_H(view)  (view.frame.size.height)
-//求一个view的右下角的x,y
+
+//get the right bottom origin's x,y of a view
+#define VIEW_CX(view) (view.frame.origin.x + view.frame.size.width / 2.0f)
+#define VIEW_CY(view) (view.frame.origin.y + view.frame.size.height / 2.0f )
+
+//get the right bottom origin's x,y of a view
 #define VIEW_BX(view) (view.frame.origin.x + view.frame.size.width)
 #define VIEW_BY(view) (view.frame.origin.y + view.frame.size.height )
 
-#define FRAME_X(frame)  (frame.origin.x)
-#define FRAME_Y(frame)  (frame.origin.y)
+//get the x,y of the frame
+#define FRAME_TX(frame)  (frame.origin.x)
+#define FRAME_TY(frame)  (frame.origin.y)
+//get the size of the frame
 #define FRAME_W(frame)  (frame.size.width)
 #define FRAME_H(frame)  (frame.size.height)
+
+#define DistanceFloat(PointA,PointB) sqrtf((PointA.x - PointB.x) * (PointA.x - PointB.x) + (PointA.y - PointB.y) * (PointA.y - PointB.y))
+#define DAY_SEC  (3600 * 24 * 1000) //一天的毫秒
